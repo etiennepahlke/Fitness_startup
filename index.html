@@ -14,14 +14,20 @@
       <span class="brand-mark" aria-hidden="true">n</span>
       <span id="brand-name">Newrep</span>
     </a>
-    <nav aria-label="Main navigation">
+    <button class="nav-menu-toggle" id="nav-menu-toggle" type="button" aria-label="Open navigation"
+      aria-expanded="false" aria-controls="main-navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="main-navigation" aria-label="Main navigation">
       <a href="#how-it-works">How it works</a>
-      <a href="#how-it-grows">How it grows</a>
+      <a href="#how-it-grows">Growth</a>
+      <a href="#free-plan">Free plan</a>
       <a href="#log-meal">Log a meal</a>
+      <a href="#trainers">Find a trainer</a>
+      <a class="nav-plan" href="#get-my-plan">Get my plan</a>
+      <a href="#my-bookings">My bookings</a>
       <a href="#trainer-view">Trainer view</a>
       <a href="#for-trainers">For trainers</a>
-      <a class="nav-plan" href="#get-my-plan">Get my plan</a>
-      <a class="nav-cta" href="#trainers">Find a trainer <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
 
@@ -180,15 +186,15 @@
           </label>
           <div class="growth-metrics" aria-live="polite">
             <div class="growth-metric">
-              <div class="growth-metric-label"><span>Specialties available</span><strong id="specialties-metric">—</strong></div>
+              <div class="growth-metric-label"><span>Specialties available</span><strong id="specialties-metric">7 specialties</strong></div>
               <div class="growth-bar" role="img" aria-label="Specialties available"><span id="specialties-bar"></span></div>
             </div>
             <div class="growth-metric">
-              <div class="growth-metric-label"><span>Average wait for a slot</span><strong id="wait-metric">—</strong></div>
+              <div class="growth-metric-label"><span>Average wait for a slot</span><strong id="wait-metric">6 days</strong></div>
               <div class="growth-bar" role="img" aria-label="Slot availability"><span id="wait-bar"></span></div>
             </div>
             <div class="growth-metric">
-              <div class="growth-metric-label"><span>Average check-in price</span><strong id="price-metric">—</strong></div>
+              <div class="growth-metric-label"><span>Average check-in price</span><strong id="price-metric">$27</strong></div>
               <div class="growth-bar" role="img" aria-label="Price affordability"><span id="price-bar"></span></div>
             </div>
           </div>
@@ -210,11 +216,11 @@
           </label>
           <div class="growth-metrics" aria-live="polite">
             <div class="growth-metric">
-              <div class="growth-metric-label"><span>Trainer schedule fullness</span><strong id="fullness-metric">—</strong></div>
+              <div class="growth-metric-label"><span>Trainer schedule fullness</span><strong id="fullness-metric">73%</strong></div>
               <div class="growth-bar" role="img" aria-label="Trainer schedule fullness"><span id="fullness-bar"></span></div>
             </div>
             <div class="growth-metric">
-              <div class="growth-metric-label"><span>Estimated monthly earnings / trainer</span><strong id="earnings-metric">—</strong></div>
+              <div class="growth-metric-label"><span>Estimated monthly earnings / trainer</span><strong id="earnings-metric">$591 / month</strong></div>
               <div class="growth-bar" role="img" aria-label="Estimated monthly earnings per trainer"><span id="earnings-bar"></span></div>
             </div>
           </div>
@@ -326,8 +332,8 @@
         </div>
         <div class="trainer-controls">
           <label class="search">
-            <span class="sr-only">Search trainers</span>
-            <input type="search" id="search-box" placeholder="Search trainers…" autocomplete="off">
+            <span class="search-label">Search trainers</span>
+            <input type="search" id="search-box" autocomplete="off">
             <span class="search-icon" aria-hidden="true">⌕</span>
           </label>
           <label class="trainer-filter" for="specialty-filter">

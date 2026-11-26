@@ -47,6 +47,8 @@
   const trainerCheckinNote = document.getElementById("trainer-checkin-note");
   const trainerFoodDays = document.getElementById("trainer-food-days");
   const trainerFoodStorageNote = document.getElementById("trainer-food-storage-note");
+  const navMenuToggle = document.getElementById("nav-menu-toggle");
+  const mainNavigation = document.getElementById("main-navigation");
 
   const BOOKINGS_STORAGE_KEY = "newrep-demo-bookings";
   const MEAL_PRESETS = [
@@ -671,6 +673,12 @@
     emptyMessage.hidden = matches.length > 0;
   }
 
+  function closeNavigation() {
+    document.querySelector(".site-header").classList.remove("nav-open");
+    navMenuToggle.setAttribute("aria-expanded", "false");
+    navMenuToggle.setAttribute("aria-label", "Open navigation");
+  }
+
   function showBookingConfirmation() {
     if (!selectedBooking) return;
     const summaryItems = [
@@ -806,6 +814,21 @@
   buildPlanButton.addEventListener("click", buildPlan);
   trainerCountSlider.addEventListener("input", updateGrowthMetrics);
   userCountSlider.addEventListener("input", updateGrowthMetrics);
+  navMenuToggle.addEventListener("click", function () {
+    const isExpanded = navMenuToggle.getAttribute("aria-expanded") === "true";
+    document.querySelector(".site-header").classList.toggle("nav-open", !isExpanded);
+    navMenuToggle.setAttribute("aria-expanded", String(!isExpanded));
+    navMenuToggle.setAttribute("aria-label", isExpanded ? "Open navigation" : "Close navigation");
+  });
+  mainNavigation.addEventListener("click", function (event) {
+    if (event.target.closest("a")) closeNavigation();
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && navMenuToggle.getAttribute("aria-expanded") === "true") {
+      closeNavigation();
+      navMenuToggle.focus();
+    }
+  });
   takePhotoButton.addEventListener("click", function () {
     const meal = MEAL_PRESETS[Math.floor(Math.random() * MEAL_PRESETS.length)];
     analyzeMeal(meal);
