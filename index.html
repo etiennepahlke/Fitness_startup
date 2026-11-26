@@ -18,6 +18,7 @@
       <a href="#how-it-works">How it works</a>
       <a href="#how-it-grows">How it grows</a>
       <a href="#log-meal">Log a meal</a>
+      <a href="#trainer-view">Trainer view</a>
       <a href="#for-trainers">For trainers</a>
       <a class="nav-plan" href="#get-my-plan">Get my plan</a>
       <a class="nav-cta" href="#trainers">Find a trainer <span aria-hidden="true">↗</span></a>
@@ -376,6 +377,65 @@
       <p class="booking-storage-message" id="booking-storage-message" role="status" hidden></p>
       <div class="my-bookings-list" id="my-bookings-list" aria-live="polite"></div>
       <p class="my-bookings-empty" id="my-bookings-empty">No demo bookings yet. Choose a trainer and time slot to get started.</p>
+    </section>
+
+    <section class="trainer-view-section" id="trainer-view" aria-labelledby="trainer-view-heading">
+      <div class="trainer-view-heading">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> TRAINER WORKSPACE · DEMO</p>
+        <h2 id="trainer-view-heading">Trainer view</h2>
+        <p>A fictional trainer dashboard with upcoming demo check-ins and one sample client. Nothing here is a real appointment or client record.</p>
+      </div>
+
+      <section class="upcoming-checkins" aria-labelledby="upcoming-checkins-heading">
+        <div class="trainer-view-subheading">
+          <div>
+            <p class="eyebrow">ON YOUR SCHEDULE</p>
+            <h3 id="upcoming-checkins-heading">Upcoming demo check-ins</h3>
+          </div>
+          <span class="trainer-demo-tag">Sample data</span>
+        </div>
+        <div class="trainer-checkin-list" id="trainer-checkin-list" aria-live="polite"></div>
+        <p class="trainer-view-note" id="trainer-checkin-note">Upcoming check-ins saved in this browser will appear alongside this sample.</p>
+      </section>
+
+      <section class="trainer-client" aria-labelledby="trainer-client-heading">
+        <div class="trainer-client-heading">
+          <span class="trainer-client-avatar" aria-hidden="true">AR</span>
+          <div>
+            <p class="eyebrow">FICTIONAL CLIENT</p>
+            <h3 id="trainer-client-heading">Alex R.</h3>
+            <p>Beginner · getting comfortable with a routine</p>
+          </div>
+        </div>
+        <div class="trainer-client-grid">
+          <article class="trainer-client-card">
+            <p class="eyebrow">THEIR GOAL</p>
+            <h4>Build healthy habits</h4>
+            <p>Feel stronger and find a routine that fits a busy week—one manageable step at a time.</p>
+          </article>
+          <article class="trainer-client-card">
+            <p class="eyebrow">CURRENT PLAN</p>
+            <h4>3 days · home basics</h4>
+            <ul class="trainer-plan-list">
+              <li><span>Mon</span> Full-body strength basics · 20 min</li>
+              <li><span>Wed</span> Comfortable-paced walk · 20 min</li>
+              <li><span>Fri</span> Strength & balance · 20 min</li>
+            </ul>
+            <p class="trainer-client-plan-note">Fictional example plan, not a medical or training prescription.</p>
+          </article>
+          <article class="trainer-client-card trainer-food-card">
+            <div class="trainer-food-heading">
+              <div>
+                <p class="eyebrow">RECENT FOOD LOG</p>
+                <h4>Past few days</h4>
+              </div>
+              <span class="trainer-demo-tag">Example + saved demo meals</span>
+            </div>
+            <p class="trainer-food-storage-note" id="trainer-food-storage-note" role="status" hidden></p>
+            <div class="trainer-food-days" id="trainer-food-days"></div>
+          </article>
+        </div>
+      </section>
     </section>
 
     <section class="trainer-invite" id="for-trainers">

@@ -43,6 +43,10 @@
   const mealEmptyNote = document.getElementById("meal-empty-note");
   const mealStorageMessage = document.getElementById("meal-storage-message");
   const habitsMode = document.getElementById("habits-mode");
+  const trainerCheckinList = document.getElementById("trainer-checkin-list");
+  const trainerCheckinNote = document.getElementById("trainer-checkin-note");
+  const trainerFoodDays = document.getElementById("trainer-food-days");
+  const trainerFoodStorageNote = document.getElementById("trainer-food-storage-note");
 
   const BOOKINGS_STORAGE_KEY = "newrep-demo-bookings";
   const MEAL_PRESETS = [
@@ -178,6 +182,76 @@
     mealStorageMessage.hidden = !mealStorageError;
   }
 
+  function renderTrainerFoodLog() {
+    const exampleMeals = {
+      2: ["Greek yogurt, berries & granola", "Turkey and avocado sandwich"],
+      1: ["Oatmeal with banana", "Tofu veggie stir-fry"]
+    };
+    const storageIssues = mealStorageError ? [mealStorageError] : [];
+    const days = [2, 1, 0].map(function (offset) {
+      const date = new Date();
+      date.setDate(date.getDate() - offset);
+      const dateKey = localDateKey(date);
+      let meals = [];
+      if (offset === 0) {
+        meals = savedMeals;
+      } else {
+        try {
+          const stored = window.localStorage.getItem("newrep-demo-meals-" + dateKey);
+          if (stored) {
+            const parsed = JSON.parse(stored);
+            if (!Array.isArray(parsed) || !parsed.every(isSavedMeal)) {
+              throw new Error("Saved meals are not in the expected format.");
+            }
+            meals = parsed;
+          }
+        } catch (error) {
+          storageIssues.push("A saved food log couldn't be read for " +
+            new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric" }).format(date) + ".");
+        }
+      }
+
+      const day = document.createElement("section");
+      day.className = "trainer-food-day";
+      const heading = document.createElement("h5");
+      heading.textContent = offset === 0 ? "Today" : offset === 1 ? "Yesterday" :
+        new Intl.DateTimeFormat(undefined, { weekday: "long", month: "short", day: "numeric" }).format(date);
+      const list = document.createElement("ul");
+      (exampleMeals[offset] || []).forEach(function (name) {
+        const item = document.createElement("li");
+        const mealName = document.createElement("span");
+        mealName.textContent = name;
+        const tag = document.createElement("span");
+        tag.className = "trainer-food-source";
+        tag.textContent = "Sample";
+        item.append(mealName, tag);
+        list.append(item);
+      });
+      meals.forEach(function (meal) {
+        const item = document.createElement("li");
+        const mealName = document.createElement("span");
+        mealName.textContent = meal.name;
+        const tag = document.createElement("span");
+        tag.className = "trainer-food-source trainer-food-source-saved";
+        tag.textContent = "Saved demo meal";
+        item.append(mealName, tag);
+        list.append(item);
+      });
+      if (!list.childElementCount) {
+        const empty = document.createElement("li");
+        empty.className = "trainer-food-empty";
+        empty.textContent = "No meals saved for this day.";
+        list.append(empty);
+      }
+      day.append(heading, list);
+      return day;
+    });
+
+    trainerFoodDays.replaceChildren.apply(trainerFoodDays, days);
+    trainerFoodStorageNote.textContent = storageIssues.join(" ");
+    trainerFoodStorageNote.hidden = storageIssues.length === 0;
+  }
+
   function setMealButtonsDisabled(disabled) {
     takePhotoButton.disabled = disabled;
     mealSamples.querySelectorAll("button").forEach(function (button) {
@@ -246,6 +320,7 @@
     selectedMeal = null;
     mealResults.hidden = true;
     updateMealTotals();
+    renderTrainerFoodLog();
   }
 
   function isSavedBooking(booking) {
@@ -273,6 +348,62 @@
   }
 
   let bookings = loadBookings();
+
+  function makeTrainerCheckinCard(booking, isSample) {
+    const card = document.createElement("article");
+    card.className = "trainer-checkin-card";
+    const date = document.createElement("p");
+    date.className = "trainer-checkin-date";
+    date.textContent = new Intl.DateTimeFormat(undefined, {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit"
+    }).format(new Date(booking.slotIso));
+    const client = document.createElement("h4");
+    client.textContent = "Alex R.";
+    const specialty = document.createElement("p");
+    specialty.className = "trainer-checkin-detail";
+    specialty.textContent = booking.specialty + " · 15-minute video";
+    const coach = document.createElement("p");
+    coach.className = "trainer-checkin-coach";
+    coach.textContent = "Trainer: " + booking.trainerName;
+    const tag = document.createElement("span");
+    tag.className = "trainer-demo-tag";
+    tag.textContent = isSample ? "Sample preview · not booked" : "Saved demo booking";
+    card.append(date, client, specialty, coach, tag);
+    return card;
+  }
+
+  function renderTrainerCheckins() {
+    const now = Date.now();
+    const upcoming = bookings.filter(function (booking) {
+      const timestamp = new Date(booking.slotIso).getTime();
+      return Number.isFinite(timestamp) && timestamp > now;
+    }).sort(function (first, second) {
+      return new Date(first.slotIso).getTime() - new Date(second.slotIso).getTime();
+    });
+    const cards = upcoming.map(function (booking) {
+      return makeTrainerCheckinCard(booking, false);
+    });
+    if (!cards.length) {
+      const sampleDate = new Date();
+      sampleDate.setDate(sampleDate.getDate() + 1);
+      sampleDate.setHours(10, 0, 0, 0);
+      cards.push(makeTrainerCheckinCard({
+        slotIso: sampleDate.toISOString(),
+        specialty: "Beginner-friendly movement",
+        trainerName: "Morgan L."
+      }, true));
+    }
+    trainerCheckinList.replaceChildren.apply(trainerCheckinList, cards);
+    trainerCheckinNote.textContent = bookingStorageError
+      ? bookingStorageError + " This sample preview is fictional."
+      : upcoming.length
+        ? "Showing upcoming demo bookings saved in this browser."
+        : "A sample preview is shown until an upcoming demo booking is saved in this browser.";
+  }
 
   function renderBookings() {
     myBookingsList.replaceChildren.apply(myBookingsList, bookings.map(function (booking) {
@@ -568,6 +699,7 @@
     } catch (error) {
       bookingStorageError = "This browser couldn't save your demo booking. Check your browser's local storage settings and try again.";
       renderBookings();
+      renderTrainerCheckins();
       return;
     }
     bookings = updatedBookings;
@@ -575,6 +707,7 @@
     selectedBooking = null;
     bookingConfirmation.hidden = true;
     renderBookings();
+    renderTrainerCheckins();
     renderTrainers();
     document.getElementById("my-bookings").scrollIntoView({ behavior: "smooth", block: "start" });
     document.getElementById("my-bookings-heading").focus();
@@ -685,5 +818,7 @@
   updateMealTotals();
   renderTrainers();
   renderBookings();
+  renderTrainerCheckins();
+  renderTrainerFoodLog();
   updateGrowthMetrics();
 })();
