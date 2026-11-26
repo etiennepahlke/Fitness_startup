@@ -300,6 +300,39 @@ main { overflow: hidden; }
 .step-card h3 { margin: 0 0 8px; font-size: 1.06rem; font-weight: 680; letter-spacing: -0.025em; }
 .step-card p { margin: 0; color: var(--muted); font-size: 0.86rem; line-height: 1.65; }
 
+.growth-section {
+  padding: 88px max(8vw, calc((100vw - 1120px) / 2)) 82px;
+  background: #e9eddf;
+}
+.growth-heading { max-width: 720px; margin: 0 auto; text-align: center; }
+.growth-heading .eyebrow { justify-content: center; }
+.growth-heading h2 {
+  margin: 0;
+  font-size: clamp(2rem, 3.7vw, 3.15rem);
+  font-weight: 630;
+  letter-spacing: -0.065em;
+  line-height: 1.1;
+}
+.growth-heading > p:last-child { margin: 13px 0 0; color: var(--muted); }
+.growth-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 37px; }
+.growth-panel { padding: 24px; background: var(--paper); border: 1px solid #e1e5d9; border-radius: 12px; }
+.growth-panel-heading { display: flex; align-items: flex-start; gap: 13px; }
+.growth-side-number { display: grid; width: 38px; height: 38px; flex: 0 0 38px; place-items: center; color: var(--green-dark); background: #e6ecdc; border-radius: 50%; font-size: 0.69rem; font-weight: 750; }
+.growth-panel-users .growth-side-number { color: #805c43; background: #f2dfce; }
+.growth-panel-heading .eyebrow { margin: 1px 0 3px; font-size: 0.64rem; }
+.growth-panel-heading h3 { margin: 0; font-size: 1.18rem; letter-spacing: -0.04em; }
+.growth-slider-field { display: grid; grid-template-columns: 1fr auto; gap: 3px 10px; margin-top: 23px; color: var(--muted); font-size: 0.76rem; font-weight: 650; }
+.growth-slider-field output { color: var(--green-dark); font-size: 0.9rem; font-weight: 750; }
+.growth-slider-field input { grid-column: 1 / -1; width: 100%; margin: 7px 0 0; accent-color: var(--green); cursor: pointer; }
+.growth-metrics { display: grid; gap: 17px; margin-top: 24px; }
+.growth-metric-label { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 7px; color: var(--muted); font-size: 0.73rem; }
+.growth-metric-label strong { color: var(--ink); font-size: 0.78rem; text-align: right; }
+.growth-bar { height: 9px; overflow: hidden; background: #edf0e7; border-radius: 20px; }
+.growth-bar > span { display: block; width: 0; height: 100%; background: #769548; border-radius: inherit; transition: width 180ms ease; }
+.growth-panel-users .growth-bar > span { background: #ba7750; }
+.growth-explanation { min-height: 46px; margin: 21px 0 0; padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.76rem; line-height: 1.6; }
+.growth-model-note { margin: 17px 0 0; color: var(--muted); font-size: 0.68rem; text-align: center; }
+
 .free-plan-section {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -613,7 +646,7 @@ main { overflow: hidden; }
   .hero h1 { font-size: clamp(2.7rem, 6vw, 4.2rem); }
   .plan-card { width: 90%; padding-right: 20px; padding-left: 20px; }
   .art-sticker { right: -5px; }
-  .how-section, .free-plan-section, .plan-builder-section, .trainer-section,
+  .how-section, .growth-section, .free-plan-section, .plan-builder-section, .trainer-section,
   .booking-confirmation-section, .my-bookings-section { padding-right: 6vw; padding-left: 6vw; }
   .free-plan-section { gap: 5vw; }
   .trainer-invite { padding-right: 6vw; padding-left: 6vw; }
@@ -622,7 +655,7 @@ main { overflow: hidden; }
   html { scroll-padding-top: 68px; }
   .site-header { min-height: 66px; padding: 0 18px; }
   .brand { font-size: 1.13rem; }
-  nav { gap: 16px; }
+  nav { max-width: 64%; flex-wrap: wrap; justify-content: flex-end; gap: 2px 10px; }
   nav a { font-size: 0.72rem; }
   nav .nav-cta { display: none; }
   nav .nav-plan { color: var(--green); }
@@ -636,6 +669,10 @@ main { overflow: hidden; }
   .art-sticker { right: 1%; bottom: 30px; width: 80px; height: 80px; font-size: 0.54rem; }
   .art-squiggle { top: 20px; }
   .how-section, .trainer-section { padding: 65px 22px; }
+  .growth-section { padding: 65px 22px; }
+  .growth-panels { grid-template-columns: 1fr; gap: 12px; margin-top: 27px; }
+  .growth-panel { padding: 20px; }
+  .growth-explanation { min-height: 0; }
   .booking-confirmation-section, .my-bookings-section { padding: 50px 22px; }
   .steps { grid-template-columns: 1fr; gap: 11px; margin-top: 30px; }
   .step-card { min-height: 0; padding: 18px 19px 19px; }
@@ -669,13 +706,13 @@ main { overflow: hidden; }
 }
 @media (max-width: 380px) {
   .site-header { padding-right: 13px; padding-left: 13px; }
-  nav { gap: 11px; }
+  nav { max-width: 65%; column-gap: 7px; }
   nav a { font-size: 0.68rem; }
   .hero { padding-right: 17px; padding-left: 17px; }
   .hero h1 { font-size: 2.55rem; }
   .hero-actions { align-items: stretch; flex-direction: column; }
   .button { width: 100%; }
-  .how-section, .free-plan-section, .plan-builder-section, .trainer-section, .trainer-invite,
+  .how-section, .growth-section, .free-plan-section, .plan-builder-section, .trainer-section, .trainer-invite,
   .booking-confirmation-section, .my-bookings-section { padding-right: 17px; padding-left: 17px; }
   .weekly-plan { grid-template-columns: 1fr; }
   .plan-day-description { min-height: 0; }

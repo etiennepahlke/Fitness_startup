@@ -27,6 +27,8 @@
   const resultsSummary = document.getElementById("results-summary");
   const weeklyPlan = document.getElementById("weekly-plan");
   const nutritionTips = document.getElementById("nutrition-tips");
+  const trainerCountSlider = document.getElementById("trainer-count-slider");
+  const userCountSlider = document.getElementById("user-count-slider");
 
   const BOOKINGS_STORAGE_KEY = "newrep-demo-bookings";
   let bookingStorageError = "";
@@ -108,6 +110,34 @@
       });
     }
     return slots;
+  }
+
+  function updateGrowthMetrics() {
+    const trainerCount = Number(trainerCountSlider.value);
+    const userCount = Number(userCountSlider.value);
+    const trainerScale = (trainerCount - 5) / (500 - 5);
+    const specialtyCount = Math.round(3 + trainerScale * 21);
+    const averageWait = Math.round(7 - trainerScale * 6);
+    const averagePrice = Math.round(30 - trainerScale * 15);
+    const usersPerTrainer = userCount / trainerCount;
+    const scheduleFullness = Math.round(
+      5 + 95 * usersPerTrainer / (usersPerTrainer + 20)
+    );
+    const earnings = Math.round(scheduleFullness / 100 * 30 * averagePrice);
+
+    document.getElementById("trainer-count-output").textContent = trainerCount.toLocaleString();
+    document.getElementById("user-count-output").textContent = userCount.toLocaleString();
+    document.getElementById("specialties-metric").textContent = specialtyCount + " specialties";
+    document.getElementById("wait-metric").textContent = averageWait + (averageWait === 1 ? " day" : " days");
+    document.getElementById("price-metric").textContent = "$" + averagePrice;
+    document.getElementById("fullness-metric").textContent = scheduleFullness + "%";
+    document.getElementById("earnings-metric").textContent = "$" + earnings.toLocaleString() + " / month";
+
+    document.getElementById("specialties-bar").style.width = (specialtyCount / 24 * 100) + "%";
+    document.getElementById("wait-bar").style.width = ((8 - averageWait) / 7 * 100) + "%";
+    document.getElementById("price-bar").style.width = ((31 - averagePrice) / 16 * 100) + "%";
+    document.getElementById("fullness-bar").style.width = scheduleFullness + "%";
+    document.getElementById("earnings-bar").style.width = (earnings / 900 * 100) + "%";
   }
 
   const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -427,6 +457,9 @@
     document.getElementById("trainers").scrollIntoView({ behavior: "smooth", block: "start" });
   });
   buildPlanButton.addEventListener("click", buildPlan);
+  trainerCountSlider.addEventListener("input", updateGrowthMetrics);
+  userCountSlider.addEventListener("input", updateGrowthMetrics);
   renderTrainers();
   renderBookings();
+  updateGrowthMetrics();
 })();

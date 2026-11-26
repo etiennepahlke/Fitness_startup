@@ -16,6 +16,7 @@
     </a>
     <nav aria-label="Main navigation">
       <a href="#how-it-works">How it works</a>
+      <a href="#how-it-grows">How it grows</a>
       <a href="#for-trainers">For trainers</a>
       <a class="nav-plan" href="#get-my-plan">Get my plan</a>
       <a class="nav-cta" href="#trainers">Find a trainer <span aria-hidden="true">↗</span></a>
@@ -85,6 +86,72 @@
           <p>Book a 15-minute video session with a certified trainer for just $20–25.</p>
         </article>
       </div>
+    </section>
+
+    <section class="growth-section" id="how-it-grows">
+      <div class="growth-heading">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> A COMMUNITY THAT BUILDS MOMENTUM</p>
+        <h2>More of one side makes things better for the other.</h2>
+        <p>Explore how a growing trainer community and more people getting started can support each other.</p>
+      </div>
+      <div class="growth-panels">
+        <article class="growth-panel">
+          <div class="growth-panel-heading">
+            <span class="growth-side-number">01</span>
+            <div>
+              <p class="eyebrow">MORE TRAINERS</p>
+              <h3>Better choice for users</h3>
+            </div>
+          </div>
+          <label class="growth-slider-field" for="trainer-count-slider">
+            <span>Number of trainers</span>
+            <output id="trainer-count-output" for="trainer-count-slider">100</output>
+            <input id="trainer-count-slider" type="range" min="5" max="500" step="5" value="100">
+          </label>
+          <div class="growth-metrics" aria-live="polite">
+            <div class="growth-metric">
+              <div class="growth-metric-label"><span>Specialties available</span><strong id="specialties-metric">—</strong></div>
+              <div class="growth-bar" role="img" aria-label="Specialties available"><span id="specialties-bar"></span></div>
+            </div>
+            <div class="growth-metric">
+              <div class="growth-metric-label"><span>Average wait for a slot</span><strong id="wait-metric">—</strong></div>
+              <div class="growth-bar" role="img" aria-label="Slot availability"><span id="wait-bar"></span></div>
+            </div>
+            <div class="growth-metric">
+              <div class="growth-metric-label"><span>Average check-in price</span><strong id="price-metric">—</strong></div>
+              <div class="growth-bar" role="img" aria-label="Price affordability"><span id="price-bar"></span></div>
+            </div>
+          </div>
+          <p class="growth-explanation">More trainers bring more specialties, more open slots, and more competitive prices.</p>
+        </article>
+
+        <article class="growth-panel growth-panel-users">
+          <div class="growth-panel-heading">
+            <span class="growth-side-number">02</span>
+            <div>
+              <p class="eyebrow">MORE USERS</p>
+              <h3>More opportunity for trainers</h3>
+            </div>
+          </div>
+          <label class="growth-slider-field" for="user-count-slider">
+            <span>Number of users</span>
+            <output id="user-count-output" for="user-count-slider">5,000</output>
+            <input id="user-count-slider" type="range" min="50" max="50000" step="50" value="5000">
+          </label>
+          <div class="growth-metrics" aria-live="polite">
+            <div class="growth-metric">
+              <div class="growth-metric-label"><span>Trainer schedule fullness</span><strong id="fullness-metric">—</strong></div>
+              <div class="growth-bar" role="img" aria-label="Trainer schedule fullness"><span id="fullness-bar"></span></div>
+            </div>
+            <div class="growth-metric">
+              <div class="growth-metric-label"><span>Estimated monthly earnings / trainer</span><strong id="earnings-metric">—</strong></div>
+              <div class="growth-bar" role="img" aria-label="Estimated monthly earnings per trainer"><span id="earnings-bar"></span></div>
+            </div>
+          </div>
+          <p class="growth-explanation">More users create steadier demand, helping trainers fill more check-in slots and earn more.</p>
+        </article>
+      </div>
+      <p class="growth-model-note">Illustrative model: up to 30 check-ins per trainer each month, with prices shifting as trainer supply grows. Not forecasts or actual marketplace data.</p>
     </section>
 
     <section class="free-plan-section" id="free-plan">
