@@ -520,6 +520,55 @@ main { overflow: hidden; }
   cursor: pointer;
 }
 .trainer-profile-toggle:hover { color: var(--green-dark); text-decoration: underline; }
+.trainer-profile-toggle:focus-visible, .profile-book-button:focus-visible, .confirmation-actions button:focus-visible {
+  outline: 3px solid #84a948;
+  outline-offset: 4px;
+}
+.trainer-profile-toggle[aria-expanded="true"] { margin-bottom: 4px; }
+.trainer-profile-details { width: 100%; }
+.trainer-profile-bio { margin: 0 0 14px; color: var(--muted); font-size: 0.77rem; line-height: 1.65; }
+.profile-specialties, .profile-reviews { margin-top: 13px; }
+.profile-specialties h4, .profile-reviews h4 { margin: 0 0 7px; font-size: 0.76rem; }
+.specialty-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.specialty-tags span { padding: 4px 8px; color: var(--green-dark); background: #e6ecdc; border-radius: 20px; font-size: 0.65rem; }
+.profile-reviews ul { display: grid; gap: 7px; margin: 0; padding-left: 17px; color: var(--muted); font-size: 0.72rem; }
+.profile-reviews li::marker { color: #aa7a27; }
+.profile-availability { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 15px 0 0; padding: 12px; border: 1px solid #e3e5dc; border-radius: 8px; }
+.profile-availability legend { padding: 0 5px; color: var(--ink); font-size: 0.75rem; font-weight: 700; }
+.availability-slot { display: flex; align-items: flex-start; gap: 6px; color: var(--muted); font-size: 0.68rem; cursor: pointer; }
+.availability-slot input { flex: 0 0 auto; margin: 3px 0 0; accent-color: var(--green); }
+.no-slots { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 0.72rem; }
+.profile-book-button { min-height: 42px; align-self: flex-start; margin-top: 13px; font-size: 0.77rem; }
+.profile-book-button:disabled { cursor: not-allowed; opacity: 0.55; transform: none; }
+.booking-confirmation-section, .my-bookings-section { padding: 65px max(8vw, calc((100vw - 1120px) / 2)); }
+.booking-confirmation-section { background: #e9eddf; scroll-margin-top: 88px; }
+.booking-confirmation-section[hidden] { display: none; }
+.booking-confirmation-section h2, .my-bookings-heading h2 {
+  margin: 0;
+  font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+  font-weight: 630;
+  letter-spacing: -0.06em;
+  line-height: 1.1;
+}
+.confirmation-note { margin: 10px 0 0; color: var(--muted); font-size: 0.84rem; }
+.confirmation-summary { display: grid; grid-template-columns: minmax(85px, 0.25fr) 1fr; gap: 10px 16px; max-width: 650px; margin: 24px 0; padding: 20px; background: var(--paper); border: 1px solid #e1e5d9; border-radius: 10px; }
+.confirmation-summary dt { color: var(--muted); font-size: 0.78rem; font-weight: 650; }
+.confirmation-summary dd { margin: 0; font-size: 0.86rem; font-weight: 650; }
+.confirmation-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.confirmation-actions .button-primary { max-width: 360px; }
+.my-bookings-section { background: #fffefa; scroll-margin-top: 88px; }
+.my-bookings-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; }
+.my-bookings-heading .eyebrow { margin-bottom: 10px; }
+.my-bookings-heading > p { max-width: 300px; margin: 0; color: var(--muted); font-size: 0.78rem; }
+.my-bookings-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 26px; }
+.my-booking-card { padding: 17px; background: var(--cream); border: 1px solid #edeee6; border-radius: 9px; }
+.my-booking-card h3 { margin: 0; font-size: 0.95rem; }
+.my-booking-card p { margin: 8px 0 0; color: var(--muted); font-size: 0.76rem; }
+.my-booking-card .my-booking-specialty { margin-top: 3px; color: var(--green-dark); font-weight: 650; }
+.my-booking-card .my-booking-price { color: var(--green-dark); font-weight: 700; }
+.my-bookings-empty, .booking-storage-message { margin: 20px 0 0; color: var(--muted); font-size: 0.82rem; }
+.booking-storage-message { color: #8a4c34; }
+.booking-storage-message[hidden], .my-bookings-empty[hidden] { display: none; }
 .empty { margin: 24px 0; color: var(--muted); font-size: 0.9rem; }
 .prototype-note { margin: 23px 0 0; color: var(--muted); font-size: 0.72rem; }
 .prototype-note span { margin-right: 5px; color: var(--green); }
@@ -564,7 +613,8 @@ main { overflow: hidden; }
   .hero h1 { font-size: clamp(2.7rem, 6vw, 4.2rem); }
   .plan-card { width: 90%; padding-right: 20px; padding-left: 20px; }
   .art-sticker { right: -5px; }
-  .how-section, .free-plan-section, .plan-builder-section, .trainer-section { padding-right: 6vw; padding-left: 6vw; }
+  .how-section, .free-plan-section, .plan-builder-section, .trainer-section,
+  .booking-confirmation-section, .my-bookings-section { padding-right: 6vw; padding-left: 6vw; }
   .free-plan-section { gap: 5vw; }
   .trainer-invite { padding-right: 6vw; padding-left: 6vw; }
 }
@@ -586,6 +636,7 @@ main { overflow: hidden; }
   .art-sticker { right: 1%; bottom: 30px; width: 80px; height: 80px; font-size: 0.54rem; }
   .art-squiggle { top: 20px; }
   .how-section, .trainer-section { padding: 65px 22px; }
+  .booking-confirmation-section, .my-bookings-section { padding: 50px 22px; }
   .steps { grid-template-columns: 1fr; gap: 11px; margin-top: 30px; }
   .step-card { min-height: 0; padding: 18px 19px 19px; }
   .step-icon { margin: 15px 0 11px; }
@@ -608,6 +659,11 @@ main { overflow: hidden; }
   .search { flex: auto; width: 100%; }
   .trainer-grid { grid-template-columns: 1fr; gap: 11px; margin-top: 24px; }
   .trainer-card { min-height: 210px; }
+  .profile-availability { grid-template-columns: 1fr; }
+  .my-bookings-heading { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .my-bookings-list { grid-template-columns: 1fr; }
+  .confirmation-actions { align-items: stretch; flex-direction: column; }
+  .confirmation-actions .button-primary { max-width: none; }
   .trainer-invite { align-items: flex-start; flex-direction: column; padding: 46px 22px; }
   .site-footer { padding-right: 16px; padding-left: 16px; font-size: 0.69rem; }
 }
@@ -619,7 +675,8 @@ main { overflow: hidden; }
   .hero h1 { font-size: 2.55rem; }
   .hero-actions { align-items: stretch; flex-direction: column; }
   .button { width: 100%; }
-  .how-section, .free-plan-section, .plan-builder-section, .trainer-section, .trainer-invite { padding-right: 17px; padding-left: 17px; }
+  .how-section, .free-plan-section, .plan-builder-section, .trainer-section, .trainer-invite,
+  .booking-confirmation-section, .my-bookings-section { padding-right: 17px; padding-left: 17px; }
   .weekly-plan { grid-template-columns: 1fr; }
   .plan-day-description { min-height: 0; }
 }

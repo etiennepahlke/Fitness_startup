@@ -11,8 +11,14 @@ const TRAINERS = [
     name: "Maya C.",
     credential: "Certified Personal Trainer",
     specialty: "Strength",
+    specialties: ["Strength training", "Beginner-friendly workouts", "At-home movement"],
     description: "Makes strength training feel approachable, with simple moves you can do at home.",
     profileDetails: "Maya helps new lifters build confidence with practical, at-home strength sessions and steady progress.",
+    reviews: [
+      "I finally feel comfortable picking up weights.",
+      "Maya explained everything without making it feel complicated.",
+      "A kind, encouraging check-in that gave me a clear next step."
+    ],
     yearsExperience: 8,
     price: 25,
     rating: 4.9,
@@ -23,8 +29,14 @@ const TRAINERS = [
     name: "Jordan E.",
     credential: "Certified Personal Trainer",
     specialty: "Running",
+    specialties: ["Running basics", "Pacing", "Recovery"],
     description: "Helps runners find a comfortable pace and make room for recovery.",
     profileDetails: "Jordan works with new and returning runners on pacing, consistency, and enjoying the miles.",
+    reviews: [
+      "Jordan helped me slow down and enjoy my runs again.",
+      "Great tips that fit my busy week.",
+      "Supportive, practical, and easy to talk to."
+    ],
     yearsExperience: 6,
     price: 22,
     rating: 4.8,
@@ -35,8 +47,14 @@ const TRAINERS = [
     name: "Sam R.",
     credential: "Certified Personal Trainer",
     specialty: "Mobility",
+    specialties: ["Mobility", "Gentle movement", "Balance"],
     description: "Offers low-pressure guidance on moving comfortably and starting at your own pace.",
     profileDetails: "Sam's check-ins focus on comfortable mobility basics, gentle movement, and meeting your body where it is.",
+    reviews: [
+      "I left with a few gentle moves I can actually remember.",
+      "Sam made the session feel relaxed and personal.",
+      "Helpful ideas for moving more comfortably day to day."
+    ],
     yearsExperience: 9,
     price: 26,
     rating: 5.0,
@@ -47,8 +65,14 @@ const TRAINERS = [
     name: "Casey M.",
     credential: "Certified Personal Trainer",
     specialty: "Weight loss",
+    specialties: ["Sustainable routines", "Strength basics", "Everyday movement"],
     description: "Supports sustainable movement habits without strict rules or quick fixes.",
     profileDetails: "Casey takes a non-judgmental approach to movement, focusing on sustainable routines and everyday wins.",
+    reviews: [
+      "Casey helped me focus on habits instead of quick fixes.",
+      "Encouraging advice that felt realistic.",
+      "A thoughtful check-in with no pressure."
+    ],
     yearsExperience: 7,
     price: 28,
     rating: 4.9,
@@ -59,8 +83,14 @@ const TRAINERS = [
     name: "Morgan L.",
     credential: "Certified Personal Trainer",
     specialty: "Beginners",
+    specialties: ["Getting started", "Movement confidence", "Simple routines"],
     description: "Makes the first steps feel clear, simple, and completely your own.",
     profileDetails: "Morgan loves helping first-timers get comfortable with the basics and choose a pace that feels manageable.",
+    reviews: [
+      "I was nervous, but Morgan made it feel easy to start.",
+      "Clear answers to all my beginner questions.",
+      "I have a plan that finally feels doable."
+    ],
     yearsExperience: 4,
     price: 18,
     rating: 4.8,
@@ -71,8 +101,14 @@ const TRAINERS = [
     name: "Quinn B.",
     credential: "Certified Personal Trainer",
     specialty: "General fitness",
+    specialties: ["Balanced fitness", "Strength", "Cardio"],
     description: "Builds balanced, practical routines around busy schedules.",
     profileDetails: "Quinn helps people combine simple strength and cardio in a flexible routine that fits real life.",
+    reviews: [
+      "Quinn helped me make a routine around my schedule.",
+      "The advice was simple and easy to follow.",
+      "I appreciated the balanced approach."
+    ],
     yearsExperience: 5,
     price: 20,
     rating: 4.7,
@@ -83,8 +119,14 @@ const TRAINERS = [
     name: "Jamie P.",
     credential: "Certified Personal Trainer",
     specialty: "Habit building",
+    specialties: ["Routine building", "Goal setting", "Consistency"],
     description: "Turns small, repeatable steps into a routine that sticks.",
     profileDetails: "Jamie helps clients set realistic goals, celebrate consistency, and make movement feel like a natural part of the week.",
+    reviews: [
+      "Jamie helped me start small and keep going.",
+      "A really positive, no-pressure conversation.",
+      "My plan now fits the week I actually have."
+    ],
     yearsExperience: 3,
     price: 15,
     rating: 4.9,
@@ -95,8 +137,14 @@ const TRAINERS = [
     name: "Drew K.",
     credential: "Certified Personal Trainer",
     specialty: "Flexibility",
+    specialties: ["Flexibility", "Stretching", "Recovery"],
     description: "Shares gentle stretching ideas for everyday comfort and recovery.",
     profileDetails: "Drew offers approachable flexibility sessions with modifications so you can move within a comfortable range.",
+    reviews: [
+      "Drew showed me comfortable options for every stretch.",
+      "I learned a simple routine for after walks.",
+      "Patient, clear, and very encouraging."
+    ],
     yearsExperience: 8,
     price: 24,
     rating: 4.8,
@@ -107,8 +155,14 @@ const TRAINERS = [
     name: "Parker T.",
     credential: "Certified Personal Trainer",
     specialty: "Strength",
+    specialties: ["Strength training", "Form fundamentals", "Progressive routines"],
     description: "Helps you learn the fundamentals and progress with confidence.",
     profileDetails: "Parker specializes in clear strength fundamentals, form cues, and building a plan one step at a time.",
+    reviews: [
+      "Parker's form tips made the movements click.",
+      "I got clear next steps without feeling overwhelmed.",
+      "A great session for building confidence."
+    ],
     yearsExperience: 11,
     price: 30,
     rating: 5.0,
@@ -119,8 +173,14 @@ const TRAINERS = [
     name: "Sky N.",
     credential: "Certified Personal Trainer",
     specialty: "Running",
+    specialties: ["Beginner running", "Pacing", "Recovery"],
     description: "Keeps run training approachable with gentle pacing and recovery tips.",
     profileDetails: "Sky works with beginner runners to set comfortable milestones and build a routine without pressure.",
+    reviews: [
+      "Sky helped me make my first running goal feel possible.",
+      "Really useful pacing tips.",
+      "Friendly, encouraging, and easy to understand."
+    ],
     yearsExperience: 4,
     price: 19,
     rating: 4.7,
@@ -131,8 +191,14 @@ const TRAINERS = [
     name: "Alex D.",
     credential: "Certified Personal Trainer",
     specialty: "Beginners",
+    specialties: ["Beginner fitness", "At-home workouts", "Confidence"],
     description: "Answers beginner questions and helps you find a comfortable starting point.",
     profileDetails: "Alex makes fitness feel less intimidating with straightforward coaching and flexible beginner-friendly options.",
+    reviews: [
+      "Alex made fitness feel much less intimidating.",
+      "I loved having options I could do at home.",
+      "A friendly check-in that answered all my questions."
+    ],
     yearsExperience: 6,
     price: 23,
     rating: 4.9,
@@ -143,8 +209,14 @@ const TRAINERS = [
     name: "Rowan F.",
     credential: "Certified Personal Trainer",
     specialty: "Weight loss",
+    specialties: ["Sustainable movement", "Habit building", "Strength basics"],
     description: "Focuses on enjoyable movement and patient, sustainable progress.",
     profileDetails: "Rowan supports clients in finding forms of movement they enjoy and building lasting habits at their own pace.",
+    reviews: [
+      "Rowan helped me find movement I genuinely enjoy.",
+      "The suggestions felt patient and realistic.",
+      "I left feeling positive about my next steps."
+    ],
     yearsExperience: 5,
     price: 21,
     rating: 4.8,
