@@ -3,91 +3,141 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>YourStartup</title>
-  <meta name="description" content="A student startup prototype for BSAD 281.">
+  <meta name="description" content="A free, beginner-friendly fitness plan and affordable 15-minute check-ins with certified personal trainers.">
+  <meta name="theme-color" content="#f5f4ee">
+  <title>Newrep — fitness that meets you where you are</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-  <!-- =========================================================
-       HEADER: logo text + navigation.
-       Each link points to a "view" further down the page (#home, #explore, #about).
-       ========================================================= -->
   <header class="site-header">
-    <a class="brand" href="#home" id="brand-name">YourStartup</a>
-    <nav aria-label="Main">
-      <a href="#home">Home</a>
-      <a href="#explore">Explore</a>
-      <a href="#about">About</a>
+    <a class="brand" href="#home" aria-label="Newrep home">
+      <span class="brand-mark" aria-hidden="true">n</span>
+      <span id="brand-name">Newrep</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#how-it-works">How it works</a>
+      <a href="#trainers">For trainers</a>
+      <a class="nav-cta" href="#trainers">Meet the trainers <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
 
   <main>
-
-    <!-- =======================================================
-         VIEW 1: HOME — what you do, for whom, and why it matters.
-         ======================================================= -->
-    <section id="home" data-view>
-      <div class="hero">
-        <p class="eyebrow">Prototype</p>
-        <h1 id="tagline">One sentence that says what your startup does.</h1>
-        <p class="lead" id="pitch">
-          Who is your customer, what problem do they have, and why is your
-          solution better than what they use today?
-        </p>
-        <a class="button" href="#explore">See it in action</a>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> A better place to begin</p>
+        <h1 id="tagline">Your first fitness plan, made for you—with a real trainer in your corner.</h1>
+        <p class="lead" id="pitch">New to working out? Get a free AI-generated plan, then book a quick 15-minute video check-in with a certified personal trainer for just $20–25.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#free-plan">Get my free plan <span aria-hidden="true">→</span></a>
+          <a class="button button-secondary" href="#trainers">Find a trainer <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="hero-note"><span aria-hidden="true">✳</span> No gym experience needed. Start at your own pace.</p>
       </div>
 
+      <div class="plan-art" aria-label="Illustration of a sample beginner workout plan">
+        <div class="art-orbit orbit-one"></div>
+        <div class="art-orbit orbit-two"></div>
+        <div class="plan-card">
+          <div class="plan-card-top">
+            <span class="plan-label">YOUR STARTER PLAN</span>
+            <span class="plan-spark" aria-hidden="true">✳</span>
+          </div>
+          <h2>A little progress<br>goes a long way.</h2>
+          <p>Week one · take it at your pace</p>
+          <div class="plan-days">
+            <div class="plan-day"><span>MON</span><b class="day-active">01</b><i>Move</i></div>
+            <div class="plan-day"><span>TUE</span><b>02</b><i>Rest</i></div>
+            <div class="plan-day"><span>WED</span><b class="day-active">03</b><i>Move</i></div>
+            <div class="plan-day"><span>THU</span><b>04</b><i>Rest</i></div>
+            <div class="plan-day"><span>FRI</span><b class="day-active">05</b><i>Move</i></div>
+          </div>
+          <div class="plan-card-bottom"><span class="mini-check">✓</span> Your plan. Your pace.</div>
+        </div>
+        <div class="art-sticker"><span aria-hidden="true">✳</span> SMALL STEPS<br>COUNT</div>
+        <span class="art-squiggle" aria-hidden="true">〰</span>
+      </div>
+    </section>
+
+    <section class="how-section" id="how-it-works">
+      <div class="section-heading">
+        <p class="eyebrow">IT'S EASIER THAN YOU THINK</p>
+        <h2>A good first step changes everything.</h2>
+        <p>Skip the guesswork. We make starting simple, supportive, and affordable.</p>
+      </div>
       <div class="steps">
-        <div class="card">
-          <h2>1. Step one</h2>
-          <p>Describe the first thing a customer does.</p>
-        </div>
-        <div class="card">
-          <h2>2. Step two</h2>
-          <p>Describe what happens next.</p>
-        </div>
-        <div class="card">
-          <h2>3. Step three</h2>
-          <p>Describe the result the customer gets.</p>
-        </div>
+        <article class="step-card">
+          <span class="step-number">01 <span aria-hidden="true">↗</span></span>
+          <div class="step-icon icon-sun" aria-hidden="true">✳</div>
+          <h3>Tell us what feels doable</h3>
+          <p>Share your goals, schedule, and what you have access to. No experience required.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-number">02 <span aria-hidden="true">↗</span></span>
+          <div class="step-icon icon-leaf" aria-hidden="true">↗</div>
+          <h3>Get your free plan</h3>
+          <p>See a simple AI-generated routine shaped around your life—not someone else's.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-number">03 <span aria-hidden="true">↗</span></span>
+          <div class="step-icon icon-chat" aria-hidden="true">···</div>
+          <h3>Check in with a pro</h3>
+          <p>Book a 15-minute video session with a certified trainer for just $20–25.</p>
+        </article>
       </div>
     </section>
 
-    <!-- =======================================================
-         VIEW 2: EXPLORE — a list built from the fake data in data.js.
-         ======================================================= -->
-    <section id="explore" data-view hidden>
-      <h1>Explore</h1>
-      <p class="muted">These examples are fake. They come from <code>data.js</code>.</p>
-
-      <label class="search">
-        <span>Search</span>
-        <input type="search" id="search-box" placeholder="Type to filter…">
-      </label>
-
-      <p class="muted" id="saved-count"></p>
-      <div class="grid" id="listing-grid"></div>
-      <p class="empty" id="empty-message" hidden>Nothing matches your search.</p>
+    <section class="free-plan-section" id="free-plan">
+      <div class="free-plan-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> YOUR START STARTS HERE</p>
+        <h2>A plan that meets you where you are.</h2>
+        <p>Whether you're starting from scratch or finding your rhythm again, your free AI-generated plan gives you a friendly first-week outline to build on.</p>
+        <a class="text-link" href="#trainers">Want a little guidance? Meet your trainer <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="week-card">
+        <div class="week-heading">
+          <div><span class="plan-label">A SAMPLE FIRST WEEK</span><h3>Steady does it.</h3></div>
+          <span class="week-spark" aria-hidden="true">✳</span>
+        </div>
+        <div class="week-row"><span class="week-day">DAY 01</span><span class="week-activity">Easy full-body movement</span><span class="week-time">20 min</span></div>
+        <div class="week-row"><span class="week-day">DAY 02</span><span class="week-activity">Rest & recharge</span><span class="week-time">Your pace</span></div>
+        <div class="week-row"><span class="week-day">DAY 03</span><span class="week-activity">Gentle strength basics</span><span class="week-time">20 min</span></div>
+        <div class="week-row"><span class="week-day">DAY 04</span><span class="week-activity">Rest & recharge</span><span class="week-time">Your pace</span></div>
+        <p class="sample-note">A sample preview — your plan would be personalized to you.</p>
+      </div>
     </section>
 
-    <!-- =======================================================
-         VIEW 3: ABOUT — your team and your story.
-         ======================================================= -->
-    <section id="about" data-view hidden>
-      <h1>About us</h1>
-      <p>Tell the story of why your team started this company.</p>
-      <p>Use first names only, or no names at all — this site is public.</p>
+    <section class="trainer-section" id="trainers">
+      <div class="trainer-heading">
+        <div class="section-heading">
+          <p class="eyebrow">REAL PEOPLE. NO PRESSURE.</p>
+          <h2>Big questions, meet small check-ins.</h2>
+          <p>Certified personal trainers, here to help you feel good about getting started.</p>
+        </div>
+        <label class="search">
+          <span class="sr-only">Search trainers</span>
+          <input type="search" id="search-box" placeholder="Search a specialty…" autocomplete="off">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+        </label>
+      </div>
+      <div class="trainer-grid" id="trainer-grid" aria-live="polite"></div>
+      <p class="empty" id="empty-message" hidden>No trainers match that search. Try another specialty.</p>
+      <p class="prototype-note"><span aria-hidden="true">✳</span> Trainer profiles and availability are fictional examples. This student prototype does not take bookings or payments.</p>
     </section>
 
+    <section class="trainer-invite" id="for-trainers">
+      <div>
+        <p class="eyebrow">FOR TRAINERS</p>
+        <h2>Good coaching should be easier to find.</h2>
+        <p>Meet beginners where they are, one focused 15-minute check-in at a time.</p>
+      </div>
+      <a class="button button-light" href="#trainers">See the trainer experience <span aria-hidden="true">↗</span></a>
+    </section>
   </main>
 
-  <!-- Keep this footer. Your site must say it is a student project. -->
   <footer class="site-footer">
     <p>Student prototype for BSAD 281 at St. Francis Xavier University. Not a real company — all data is fictional.</p>
   </footer>
 
-  <!-- Scripts load in this order: data first, then the code that uses it. -->
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>
