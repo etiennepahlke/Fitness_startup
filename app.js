@@ -29,10 +29,224 @@
   const nutritionTips = document.getElementById("nutrition-tips");
   const trainerCountSlider = document.getElementById("trainer-count-slider");
   const userCountSlider = document.getElementById("user-count-slider");
+  const mealSection = document.getElementById("log-meal");
+  const mealSamples = document.getElementById("meal-samples");
+  const takePhotoButton = document.getElementById("take-photo-button");
+  const mealAnalysisStatus = document.getElementById("meal-analysis-status");
+  const mealResults = document.getElementById("meal-results");
+  const mealResultHeading = document.getElementById("meal-result-heading");
+  const mealEditor = document.getElementById("meal-editor");
+  const mealTotalsNumeric = document.getElementById("meal-totals-numeric");
+  const mealBalanceCurrent = document.getElementById("meal-balance-current");
+  const mealBalanceToday = document.getElementById("meal-balance-today");
+  const mealSavedList = document.getElementById("meal-saved-list");
+  const mealEmptyNote = document.getElementById("meal-empty-note");
+  const mealStorageMessage = document.getElementById("meal-storage-message");
+  const habitsMode = document.getElementById("habits-mode");
 
   const BOOKINGS_STORAGE_KEY = "newrep-demo-bookings";
+  const MEAL_PRESETS = [
+    { name: "Chicken rice bowl", detail: "Chicken, brown rice, broccoli", calories: 520, protein: 38, carbs: 58, fat: 14, balance: [true, true, true] },
+    { name: "Oatmeal with fruit", detail: "Oats, berries, yogurt, almonds", calories: 410, protein: 18, carbs: 62, fat: 11, balance: [true, false, true] },
+    { name: "Burger and fries", detail: "Beef burger, bun, fries, side salad", calories: 760, protein: 32, carbs: 74, fat: 38, balance: [true, true, true] },
+    { name: "Tofu veggie stir-fry", detail: "Tofu, mixed vegetables, noodles", calories: 490, protein: 24, carbs: 61, fat: 16, balance: [true, true, true] },
+    { name: "Salmon and potatoes", detail: "Salmon, roasted potatoes, green beans", calories: 610, protein: 36, carbs: 48, fat: 28, balance: [true, true, true] },
+    { name: "Bean and cheese wrap", detail: "Black beans, cheese, peppers, tortilla", calories: 450, protein: 21, carbs: 57, fat: 15, balance: [true, true, true] }
+  ];
+  const MEAL_TARGETS = [
+    { key: "calories", label: "Calories", unit: "kcal", target: 2000 },
+    { key: "protein", label: "Protein", unit: "g", target: 100 },
+    { key: "carbs", label: "Carbs", unit: "g", target: 250 },
+    { key: "fat", label: "Fat", unit: "g", target: 70 }
+  ];
   let bookingStorageError = "";
   let selectedBooking = null;
+  let selectedMeal = null;
+  let analysisTimer = null;
+  let mealStorageError = "";
+
+  function localDateKey(date) {
+    return date.getFullYear() + "-" + String(date.getMonth() + 1).padStart(2, "0") + "-" +
+      String(date.getDate()).padStart(2, "0");
+  }
+
+  const MEALS_STORAGE_KEY = "newrep-demo-meals-" + localDateKey(new Date());
+
+  function isSavedMeal(meal) {
+    return meal && typeof meal.name === "string" &&
+      ["calories", "protein", "carbs", "fat"].every(function (key) {
+        return typeof meal[key] === "number" && Number.isFinite(meal[key]) && meal[key] >= 0;
+      }) && Array.isArray(meal.balance) && meal.balance.length === 3 &&
+      meal.balance.every(function (value) { return typeof value === "boolean"; });
+  }
+
+  function loadMeals() {
+    try {
+      const saved = window.localStorage.getItem(MEALS_STORAGE_KEY);
+      if (!saved) return [];
+      const parsed = JSON.parse(saved);
+      if (!Array.isArray(parsed) || !parsed.every(isSavedMeal)) {
+        throw new Error("The saved meal data is not in the expected format.");
+      }
+      return parsed;
+    } catch (error) {
+      mealStorageError = "Saved meals couldn't be loaded from this browser. You can still try the meal demo.";
+      return [];
+    }
+  }
+
+  let savedMeals = loadMeals();
+
+  function renderMealBalance(container, meals, title) {
+    const labels = ["Protein", "Vegetables", "Carbs"];
+    const counts = labels.map(function (_, index) {
+      return meals.filter(function (meal) { return meal.balance[index]; }).length;
+    });
+    const wrapper = document.createElement("div");
+    wrapper.className = "meal-balance-summary";
+    if (title) {
+      const heading = document.createElement("h4");
+      heading.textContent = title;
+      wrapper.append(heading);
+    }
+    const list = document.createElement("ul");
+    list.className = "meal-balance-list";
+    labels.forEach(function (label, index) {
+      const item = document.createElement("li");
+      const bar = document.createElement("span");
+      bar.className = "meal-balance-bar";
+      const fill = document.createElement("span");
+      fill.style.width = (meals.length ? counts[index] / meals.length * 100 : 0) + "%";
+      bar.append(fill);
+      const text = document.createElement("span");
+      text.className = "meal-balance-label";
+      text.textContent = label;
+      const status = document.createElement("span");
+      status.className = "meal-balance-status";
+      status.textContent = meals.length
+        ? (counts[index] ? counts[index] + " of " + meals.length + " meals" : "Try adding")
+        : "Ready when you are";
+      item.append(text, bar, status);
+      list.append(item);
+    });
+    wrapper.append(list);
+    container.replaceChildren(wrapper);
+  }
+
+  function updateMealTotals() {
+    const totals = MEAL_TARGETS.reduce(function (result, nutrient) {
+      result[nutrient.key] = savedMeals.reduce(function (sum, meal) {
+        return sum + meal[nutrient.key];
+      }, 0);
+      return result;
+    }, {});
+    mealTotalsNumeric.replaceChildren.apply(mealTotalsNumeric, MEAL_TARGETS.map(function (nutrient) {
+      const metric = document.createElement("div");
+      metric.className = "meal-total-metric";
+      const label = document.createElement("div");
+      label.className = "meal-total-label";
+      const name = document.createElement("span");
+      name.textContent = nutrient.label;
+      const value = document.createElement("strong");
+      value.textContent = Math.round(totals[nutrient.key]).toLocaleString() + " / " +
+        nutrient.target.toLocaleString() + " " + nutrient.unit;
+      label.append(name, value);
+      const bar = document.createElement("div");
+      bar.className = "meal-total-bar";
+      bar.setAttribute("role", "progressbar");
+      bar.setAttribute("aria-label", nutrient.label + " today");
+      bar.setAttribute("aria-valuemin", "0");
+      bar.setAttribute("aria-valuemax", String(nutrient.target));
+      bar.setAttribute("aria-valuenow", String(Math.min(Math.round(totals[nutrient.key]), nutrient.target)));
+      const fill = document.createElement("span");
+      fill.style.width = Math.min(totals[nutrient.key] / nutrient.target * 100, 100) + "%";
+      bar.append(fill);
+      metric.append(label, bar);
+      return metric;
+    }));
+
+    mealBalanceToday.hidden = false;
+    renderMealBalance(mealBalanceToday, savedMeals, "Meal balance today");
+    mealSavedList.replaceChildren.apply(mealSavedList, savedMeals.map(function (meal) {
+      const item = document.createElement("p");
+      item.className = "meal-saved-item";
+      item.textContent = meal.name;
+      return item;
+    }));
+    mealEmptyNote.hidden = savedMeals.length > 0;
+    mealStorageMessage.textContent = mealStorageError;
+    mealStorageMessage.hidden = !mealStorageError;
+  }
+
+  function setMealButtonsDisabled(disabled) {
+    takePhotoButton.disabled = disabled;
+    mealSamples.querySelectorAll("button").forEach(function (button) {
+      button.disabled = disabled;
+    });
+  }
+
+  function analyzeMeal(meal) {
+    if (analysisTimer) window.clearTimeout(analysisTimer);
+    selectedMeal = meal;
+    mealResults.hidden = true;
+    mealAnalysisStatus.hidden = false;
+    setMealButtonsDisabled(true);
+    analysisTimer = window.setTimeout(function () {
+      mealAnalysisStatus.hidden = true;
+      mealResultHeading.textContent = meal.name;
+      ["calories", "protein", "carbs", "fat"].forEach(function (key) {
+        mealEditor.elements[key].value = meal[key];
+      });
+      renderMealBalance(mealBalanceCurrent, [meal], "Meal balance");
+      mealBalanceCurrent.hidden = false;
+      mealResults.hidden = false;
+      setMealButtonsDisabled(false);
+      analysisTimer = null;
+    }, 2000);
+  }
+
+  function renderMealSamples() {
+    mealSamples.replaceChildren.apply(mealSamples, MEAL_PRESETS.map(function (meal) {
+      const button = document.createElement("button");
+      button.className = "meal-sample-card";
+      button.type = "button";
+      button.setAttribute("aria-label", "Analyze " + meal.name);
+      const mark = document.createElement("span");
+      mark.className = "meal-sample-mark";
+      mark.setAttribute("aria-hidden", "true");
+      mark.textContent = "✳";
+      const name = document.createElement("strong");
+      name.textContent = meal.name;
+      const detail = document.createElement("span");
+      detail.textContent = meal.detail;
+      button.append(mark, name, detail);
+      button.addEventListener("click", function () { analyzeMeal(meal); });
+      return button;
+    }));
+  }
+
+  function saveMeal(event) {
+    event.preventDefault();
+    if (!selectedMeal || !mealEditor.reportValidity()) return;
+    const meal = {
+      name: selectedMeal.name,
+      balance: selectedMeal.balance.slice()
+    };
+    ["calories", "protein", "carbs", "fat"].forEach(function (key) {
+      meal[key] = Number(mealEditor.elements[key].value);
+    });
+    const updatedMeals = savedMeals.concat(meal);
+    try {
+      window.localStorage.setItem(MEALS_STORAGE_KEY, JSON.stringify(updatedMeals));
+      mealStorageError = "";
+    } catch (error) {
+      mealStorageError = "This browser couldn't save your meal. It will remain visible until you leave this page.";
+    }
+    savedMeals = updatedMeals;
+    selectedMeal = null;
+    mealResults.hidden = true;
+    updateMealTotals();
+  }
 
   function isSavedBooking(booking) {
     return booking && typeof booking.trainerId === "string" &&
@@ -459,6 +673,16 @@
   buildPlanButton.addEventListener("click", buildPlan);
   trainerCountSlider.addEventListener("input", updateGrowthMetrics);
   userCountSlider.addEventListener("input", updateGrowthMetrics);
+  takePhotoButton.addEventListener("click", function () {
+    const meal = MEAL_PRESETS[Math.floor(Math.random() * MEAL_PRESETS.length)];
+    analyzeMeal(meal);
+  });
+  mealEditor.addEventListener("submit", saveMeal);
+  habitsMode.addEventListener("change", function () {
+    mealSection.classList.toggle("habits-mode", habitsMode.checked);
+  });
+  renderMealSamples();
+  updateMealTotals();
   renderTrainers();
   renderBookings();
   updateGrowthMetrics();

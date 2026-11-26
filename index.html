@@ -17,6 +17,7 @@
     <nav aria-label="Main navigation">
       <a href="#how-it-works">How it works</a>
       <a href="#how-it-grows">How it grows</a>
+      <a href="#log-meal">Log a meal</a>
       <a href="#for-trainers">For trainers</a>
       <a class="nav-plan" href="#get-my-plan">Get my plan</a>
       <a class="nav-cta" href="#trainers">Find a trainer <span aria-hidden="true">↗</span></a>
@@ -57,6 +58,74 @@
         </div>
         <div class="art-sticker"><span aria-hidden="true">✳</span> SMALL STEPS<br>COUNT</div>
         <span class="art-squiggle" aria-hidden="true">〰</span>
+      </div>
+    </section>
+
+    <section class="meal-section" id="log-meal" aria-labelledby="meal-heading">
+      <div class="meal-heading">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> A FRIENDLY FOOD CHECK-IN</p>
+        <h2 id="meal-heading">Log a meal</h2>
+        <p>Pick a sample meal or take a pretend photo to see a made-up nutrition estimate.</p>
+        <p class="meal-demo-label">Simulated AI estimate (demo)</p>
+      </div>
+
+      <div class="meal-mode-control">
+        <label class="meal-mode-toggle" for="habits-mode">
+          <input id="habits-mode" type="checkbox">
+          <span class="meal-toggle-track" aria-hidden="true"></span>
+          <span>Habits mode</span>
+        </label>
+        <p>Focus on meal balance instead of calorie and macro numbers.</p>
+      </div>
+
+      <div class="meal-dashboard">
+        <section class="meal-log-panel" aria-label="Choose and log a meal">
+          <h3>Choose a sample meal</h3>
+          <div class="meal-samples" id="meal-samples"></div>
+          <button class="button button-secondary meal-photo-button" id="take-photo-button" type="button">
+            <span aria-hidden="true">◎</span> Take photo
+          </button>
+          <p class="meal-analysis-status" id="meal-analysis-status" role="status" aria-live="polite" hidden>
+            <span class="meal-spinner" aria-hidden="true"></span> Analyzing your meal...
+          </p>
+
+          <section class="meal-results" id="meal-results" aria-labelledby="meal-result-heading" hidden>
+            <p class="eyebrow">SIMULATED AI ESTIMATE (DEMO)</p>
+            <h3 id="meal-result-heading"></h3>
+            <div class="meal-numeric-view">
+              <p class="meal-edit-hint">Adjust these example amounts before saving.</p>
+              <form id="meal-editor">
+                <div class="meal-nutrients">
+                  <label for="meal-calories">Calories <span>kcal</span>
+                    <input id="meal-calories" name="calories" type="number" min="0" step="1" required>
+                  </label>
+                  <label for="meal-protein">Protein <span>g</span>
+                    <input id="meal-protein" name="protein" type="number" min="0" step="1" required>
+                  </label>
+                  <label for="meal-carbs">Carbs <span>g</span>
+                    <input id="meal-carbs" name="carbs" type="number" min="0" step="1" required>
+                  </label>
+                  <label for="meal-fat">Fat <span>g</span>
+                    <input id="meal-fat" name="fat" type="number" min="0" step="1" required>
+                  </label>
+                </div>
+                <button class="button button-primary meal-save-button" type="submit">Save meal</button>
+              </form>
+            </div>
+            <div class="meal-balance-view" id="meal-balance-current" hidden></div>
+          </section>
+          <p class="meal-storage-message" id="meal-storage-message" role="status" hidden></p>
+        </section>
+
+        <aside class="meal-totals-panel" aria-labelledby="meal-totals-heading">
+          <p class="eyebrow">YOUR DAY, YOUR WAY</p>
+          <h3 id="meal-totals-heading">Today's totals</h3>
+          <p class="meal-totals-note">Illustrative guideposts only—not personal targets.</p>
+          <div class="meal-numeric-view" id="meal-totals-numeric"></div>
+          <div class="meal-balance-view" id="meal-balance-today" hidden></div>
+          <div class="meal-saved-list" id="meal-saved-list" aria-live="polite"></div>
+          <p class="meal-empty-note" id="meal-empty-note">Your saved sample meals will show up here.</p>
+        </aside>
       </div>
     </section>
 
