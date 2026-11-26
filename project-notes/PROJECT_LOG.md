@@ -12,6 +12,18 @@ Keep this up to date as you go — a few lines per work session is enough. It's 
 
 Copy this block for each session.
 
+### Session 3 — Nov 26 (evening) — driver: Etienne
+
+- **Goal for this session:** Add simulated AI meal logging and a trainer view, then polish the whole site.
+
+- **Key prompts we gave Copilot** (paste the important ones):
+  1. “Add a ‘Log a meal’ page that simulates AI calorie and macro tracking... a ‘Take photo’ button that picks one at random... Label it clearly as ‘Simulated AI estimate (demo)’. Add a ‘Habits mode’ toggle that hides calorie numbers...”
+  2. “Add a ‘Trainer view’ page showing what a trainer sees: their upcoming demo check-ins, and for one fake client, their goal, current plan and food log... including any meals saved on the ‘Log a meal’ page.”
+  3. “Check the whole site... The navigation now wraps onto two lines because there are too many links; make it fit neatly on one line on a laptop and use a simple menu button on a phone. Also, when one trainer profile is expanded, the other cards in the same row stretch...”
+- **What worked:** The meal page simulates an AI estimate that can be edited and saved, and Habits mode hides the calorie numbers. The trainer view shows my real demo booking with Maya C. after I booked it as a user, so the two sides of the marketplace are connected. Booked time slots disappear from the trainer's availability. The polish pass fixed the menu and the stretched trainer cards.
+- **What broke, and how I fixed it:** After adding more pages, the menu wrapped onto two lines with words split up. When one trainer profile was opened, the other cards in the row stretched and left big empty gaps. I fixed both in one polish prompt. Adding “Do not edit anything in the project-notes folder” kept Copilot out of my log this whole session.
+- **Committed?** Yes — “Added meal logging,” “Added trainer view,” and “Polish pass.”
+
 ### Session 2 — Nov 26 — driver: Etienne
 
 - **Goal for this session:** Build the trainer marketplace, the booking flow, and the network effects page.
@@ -47,6 +59,8 @@ Copy this block for each session.
 | Nov 26 | Quiz looked unstyled on the live site, and the button reloaded the page. | Asked Copilot to fix the layout and the button. | Hard refresh (Cmd+Shift+R) because the browser was showing old cached files. |
 | Nov 26 | Copilot edited my project log on its own with inaccurate notes. | Discarded the log changes before committing. | Added “Do not edit anything in the project-notes folder” to every prompt. |
 | Nov 26 | Trainer section showed old cards, unstyled filters, and no booking after a commit. | Waited for GitHub Pages to update. | Hard refresh once the deploy finished. |
+| Nov 26 | Navigation wrapped onto two lines after adding pages. | Noticed it on the trainer view page. | Polish prompt asking for one line on a laptop and a menu button on a phone. |
+| Nov 26 | Opening one trainer profile stretched the other cards in the row. | Saved it for the polish pass. | Asked Copilot to make each card only as tall as its own content. |
 
 ## What a real version would need
 
