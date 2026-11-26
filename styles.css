@@ -357,9 +357,9 @@ main { overflow: hidden; }
   border: 1px solid #e1e5d9;
   border-radius: 12px;
 }
-.quiz-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 23px 20px; }
+.quiz-fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: 19px; }
 .quiz-field { display: grid; gap: 9px; }
-.quiz-label { font-size: 0.81rem; font-weight: 680; }
+.quiz-label { display: block; font-size: 0.81rem; font-weight: 680; }
 .quiz-label > span { margin-right: 7px; color: var(--green); font-size: 0.66rem; letter-spacing: 0.06em; }
 .quiz-field select {
   width: 100%;

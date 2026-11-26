@@ -10,6 +10,7 @@
   const searchBox = document.getElementById("search-box");
   const emptyMessage = document.getElementById("empty-message");
   const planForm = document.getElementById("plan-quiz");
+  const buildPlanButton = document.getElementById("build-plan-button");
   const planResults = document.getElementById("plan-results");
   const resultsHeading = document.getElementById("results-heading");
   const resultsSummary = document.getElementById("results-summary");
@@ -120,9 +121,7 @@
     return card;
   }
 
-  function buildPlan(event) {
-    event.preventDefault();
-
+  function buildPlan() {
     const goal = PLAN_PRESETS.goals[planForm.elements.goal.value];
     const experience = PLAN_PRESETS.experience[planForm.elements.experience.value];
     const daysPerWeek = Number(planForm.elements.daysPerWeek.value);
@@ -171,6 +170,6 @@
   }
 
   searchBox.addEventListener("input", renderTrainers);
-  planForm.addEventListener("submit", buildPlan);
+  buildPlanButton.addEventListener("click", buildPlan);
   renderTrainers();
 })();
