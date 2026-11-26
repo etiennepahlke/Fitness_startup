@@ -8,6 +8,9 @@
 
   const grid = document.getElementById("trainer-grid");
   const searchBox = document.getElementById("search-box");
+  const specialtyFilter = document.getElementById("specialty-filter");
+  const maxPriceFilter = document.getElementById("max-price-filter");
+  const maxPriceValue = document.getElementById("max-price-value");
   const emptyMessage = document.getElementById("empty-message");
   const planForm = document.getElementById("plan-quiz");
   const buildPlanButton = document.getElementById("build-plan-button");
@@ -63,17 +66,53 @@
     const price = document.createElement("div");
     price.className = "trainer-price";
     const rate = document.createElement("strong");
-    rate.textContent = "$" + trainer.price + " / 15 min";
+    rate.textContent = "$" + trainer.price + " / check-in";
     const session = document.createElement("span");
-    session.textContent = "Video check-in";
+    session.textContent = "15-minute video";
     price.append(rate, session);
 
-    card.append(top, specialty, bio, price);
+    const stats = document.createElement("div");
+    stats.className = "trainer-stats";
+    const experience = document.createElement("span");
+    experience.textContent = trainer.yearsExperience + " years experience";
+    const rating = document.createElement("span");
+    rating.className = "trainer-rating";
+    const star = document.createElement("span");
+    star.setAttribute("aria-hidden", "true");
+    star.textContent = "★";
+    const ratingText = document.createElement("span");
+    ratingText.textContent = trainer.rating.toFixed(1) + " · " + trainer.reviewCount + " reviews";
+    rating.append(star, ratingText);
+    stats.append(experience, rating);
+
+    const profile = document.createElement("p");
+    profile.className = "trainer-profile-details";
+    profile.id = "trainer-profile-" + trainer.id;
+    profile.textContent = trainer.profileDetails;
+    profile.hidden = true;
+
+    const profileButton = document.createElement("button");
+    profileButton.className = "trainer-profile-toggle";
+    profileButton.type = "button";
+    profileButton.textContent = "View profile";
+    profileButton.setAttribute("aria-expanded", "false");
+    profileButton.setAttribute("aria-controls", profile.id);
+    profileButton.addEventListener("click", function () {
+      const isExpanded = profileButton.getAttribute("aria-expanded") === "true";
+      profileButton.setAttribute("aria-expanded", String(!isExpanded));
+      profileButton.textContent = isExpanded ? "View profile" : "Hide profile";
+      profile.hidden = isExpanded;
+    });
+
+    card.append(top, specialty, stats, bio, profile, price, profileButton);
     return card;
   }
 
   function renderTrainers() {
     const query = searchBox.value.trim().toLowerCase();
+    const selectedSpecialty = specialtyFilter.value;
+    const maxPrice = Number(maxPriceFilter.value);
+    maxPriceValue.textContent = "$" + maxPrice;
     const matches = TRAINERS.filter(function (trainer) {
       const searchable = [
         trainer.name,
@@ -81,7 +120,9 @@
         trainer.specialty,
         trainer.description
       ].join(" ").toLowerCase();
-      return searchable.indexOf(query) !== -1;
+      return searchable.indexOf(query) !== -1 &&
+        (selectedSpecialty === "all" || trainer.specialty === selectedSpecialty) &&
+        trainer.price <= maxPrice;
     });
 
     grid.replaceChildren.apply(grid, matches.map(makeTrainerCard));
@@ -170,6 +211,8 @@
   }
 
   searchBox.addEventListener("input", renderTrainers);
+  specialtyFilter.addEventListener("change", renderTrainers);
+  maxPriceFilter.addEventListener("input", renderTrainers);
   buildPlanButton.addEventListener("click", buildPlan);
   renderTrainers();
 })();

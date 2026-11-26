@@ -18,7 +18,7 @@
       <a href="#how-it-works">How it works</a>
       <a href="#for-trainers">For trainers</a>
       <a class="nav-plan" href="#get-my-plan">Get my plan</a>
-      <a class="nav-cta" href="#trainers">Meet the trainers <span aria-hidden="true">↗</span></a>
+      <a class="nav-cta" href="#trainers">Find a trainer <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
 
@@ -184,17 +184,37 @@
       <div class="trainer-heading">
         <div class="section-heading">
           <p class="eyebrow">REAL PEOPLE. NO PRESSURE.</p>
-          <h2>Big questions, meet small check-ins.</h2>
-          <p>Certified personal trainers, here to help you feel good about getting started.</p>
+          <h2>Find a trainer who gets your goals.</h2>
+          <p>Browse friendly, fictional trainer profiles and find the right fit for your next small step.</p>
         </div>
-        <label class="search">
-          <span class="sr-only">Search trainers</span>
-          <input type="search" id="search-box" placeholder="Search a specialty…" autocomplete="off">
-          <span class="search-icon" aria-hidden="true">⌕</span>
-        </label>
+        <div class="trainer-controls">
+          <label class="search">
+            <span class="sr-only">Search trainers</span>
+            <input type="search" id="search-box" placeholder="Search trainers…" autocomplete="off">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+          </label>
+          <label class="trainer-filter" for="specialty-filter">
+            <span>Specialty</span>
+            <select id="specialty-filter">
+              <option value="all">All specialties</option>
+              <option value="Strength">Strength</option>
+              <option value="Running">Running</option>
+              <option value="Weight loss">Weight loss</option>
+              <option value="Beginners">Beginners</option>
+              <option value="Mobility">Mobility</option>
+              <option value="General fitness">General fitness</option>
+              <option value="Habit building">Habit building</option>
+              <option value="Flexibility">Flexibility</option>
+            </select>
+          </label>
+          <label class="trainer-filter price-filter" for="max-price-filter">
+            <span>Max price <strong id="max-price-value">$30</strong></span>
+            <input id="max-price-filter" type="range" min="15" max="30" step="1" value="30">
+          </label>
+        </div>
       </div>
       <div class="trainer-grid" id="trainer-grid" aria-live="polite"></div>
-      <p class="empty" id="empty-message" hidden>No trainers match that search. Try another specialty.</p>
+      <p class="empty" id="empty-message" hidden>No trainers match those filters. Try changing your search or price.</p>
       <p class="prototype-note"><span aria-hidden="true">✳</span> Trainer profiles and availability are fictional examples. This student prototype does not take bookings or payments.</p>
     </section>
 

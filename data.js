@@ -8,27 +8,147 @@ const STARTUP = {
 const TRAINERS = [
   {
     id: "maya",
-    name: "Maya Chen",
+    name: "Maya C.",
     credential: "Certified Personal Trainer",
-    specialty: "Strength for beginners",
+    specialty: "Strength",
     description: "Makes strength training feel approachable, with simple moves you can do at home.",
-    price: 20
+    profileDetails: "Maya helps new lifters build confidence with practical, at-home strength sessions and steady progress.",
+    yearsExperience: 8,
+    price: 25,
+    rating: 4.9,
+    reviewCount: 86
   },
   {
     id: "jordan",
-    name: "Jordan Ellis",
+    name: "Jordan E.",
     credential: "Certified Personal Trainer",
-    specialty: "Building a routine",
-    description: "Helps you find a realistic weekly rhythm and build confidence one session at a time.",
-    price: 22
+    specialty: "Running",
+    description: "Helps runners find a comfortable pace and make room for recovery.",
+    profileDetails: "Jordan works with new and returning runners on pacing, consistency, and enjoying the miles.",
+    yearsExperience: 6,
+    price: 22,
+    rating: 4.8,
+    reviewCount: 64
   },
   {
     id: "sam",
-    name: "Sam Rivera",
+    name: "Sam R.",
     credential: "Certified Personal Trainer",
-    specialty: "Mobility & movement",
+    specialty: "Mobility",
     description: "Offers low-pressure guidance on moving comfortably and starting at your own pace.",
-    price: 25
+    profileDetails: "Sam's check-ins focus on comfortable mobility basics, gentle movement, and meeting your body where it is.",
+    yearsExperience: 9,
+    price: 26,
+    rating: 5.0,
+    reviewCount: 73
+  },
+  {
+    id: "casey",
+    name: "Casey M.",
+    credential: "Certified Personal Trainer",
+    specialty: "Weight loss",
+    description: "Supports sustainable movement habits without strict rules or quick fixes.",
+    profileDetails: "Casey takes a non-judgmental approach to movement, focusing on sustainable routines and everyday wins.",
+    yearsExperience: 7,
+    price: 28,
+    rating: 4.9,
+    reviewCount: 102
+  },
+  {
+    id: "morgan",
+    name: "Morgan L.",
+    credential: "Certified Personal Trainer",
+    specialty: "Beginners",
+    description: "Makes the first steps feel clear, simple, and completely your own.",
+    profileDetails: "Morgan loves helping first-timers get comfortable with the basics and choose a pace that feels manageable.",
+    yearsExperience: 4,
+    price: 18,
+    rating: 4.8,
+    reviewCount: 47
+  },
+  {
+    id: "quinn",
+    name: "Quinn B.",
+    credential: "Certified Personal Trainer",
+    specialty: "General fitness",
+    description: "Builds balanced, practical routines around busy schedules.",
+    profileDetails: "Quinn helps people combine simple strength and cardio in a flexible routine that fits real life.",
+    yearsExperience: 5,
+    price: 20,
+    rating: 4.7,
+    reviewCount: 39
+  },
+  {
+    id: "jamie",
+    name: "Jamie P.",
+    credential: "Certified Personal Trainer",
+    specialty: "Habit building",
+    description: "Turns small, repeatable steps into a routine that sticks.",
+    profileDetails: "Jamie helps clients set realistic goals, celebrate consistency, and make movement feel like a natural part of the week.",
+    yearsExperience: 3,
+    price: 15,
+    rating: 4.9,
+    reviewCount: 31
+  },
+  {
+    id: "drew",
+    name: "Drew K.",
+    credential: "Certified Personal Trainer",
+    specialty: "Flexibility",
+    description: "Shares gentle stretching ideas for everyday comfort and recovery.",
+    profileDetails: "Drew offers approachable flexibility sessions with modifications so you can move within a comfortable range.",
+    yearsExperience: 8,
+    price: 24,
+    rating: 4.8,
+    reviewCount: 58
+  },
+  {
+    id: "parker",
+    name: "Parker T.",
+    credential: "Certified Personal Trainer",
+    specialty: "Strength",
+    description: "Helps you learn the fundamentals and progress with confidence.",
+    profileDetails: "Parker specializes in clear strength fundamentals, form cues, and building a plan one step at a time.",
+    yearsExperience: 11,
+    price: 30,
+    rating: 5.0,
+    reviewCount: 119
+  },
+  {
+    id: "sky",
+    name: "Sky N.",
+    credential: "Certified Personal Trainer",
+    specialty: "Running",
+    description: "Keeps run training approachable with gentle pacing and recovery tips.",
+    profileDetails: "Sky works with beginner runners to set comfortable milestones and build a routine without pressure.",
+    yearsExperience: 4,
+    price: 19,
+    rating: 4.7,
+    reviewCount: 28
+  },
+  {
+    id: "alex",
+    name: "Alex D.",
+    credential: "Certified Personal Trainer",
+    specialty: "Beginners",
+    description: "Answers beginner questions and helps you find a comfortable starting point.",
+    profileDetails: "Alex makes fitness feel less intimidating with straightforward coaching and flexible beginner-friendly options.",
+    yearsExperience: 6,
+    price: 23,
+    rating: 4.9,
+    reviewCount: 77
+  },
+  {
+    id: "rowan",
+    name: "Rowan F.",
+    credential: "Certified Personal Trainer",
+    specialty: "Weight loss",
+    description: "Focuses on enjoyable movement and patient, sustainable progress.",
+    profileDetails: "Rowan supports clients in finding forms of movement they enjoy and building lasting habits at their own pace.",
+    yearsExperience: 5,
+    price: 21,
+    rating: 4.8,
+    reviewCount: 52
   }
 ];
 
