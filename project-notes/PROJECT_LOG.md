@@ -2,9 +2,9 @@
 
 Keep this up to date as you go — a few lines per work session is enough. It's much harder to reconstruct at the end.
 
-**Team name:**
-**Startup name:**
-**Live site link:**
+**Name:** Etienne  
+**Startup:** Newrep  
+**Live link:** https://etiennepahlke.github.io/Fitness_startup/
 
 ---
 
@@ -12,15 +12,17 @@ Keep this up to date as you go — a few lines per work session is enough. It's 
 
 Copy this block for each session.
 
-### Session — [date] — driver: [first name]
+### Session 1 — Nov 26 — driver: Etienne
 
-- **Goal for this session:**
+- **Goal for this session:** Rename the repo, turn on GitHub Pages, and build the home page and the plan quiz.
+
 - **Key prompts we gave Copilot** (paste the important ones):
-  1.
-  2.
-- **What worked:**
-- **What broke, and how we fixed it:**
-- **Committed?** yes / no — commit message:
+  1. “Replace the placeholder content of this starter site with a new site for Newrep, a platform where beginners get a free AI-generated fitness plan and can book cheap 15-minute video check-ins with certified personal trainers... Plain HTML, CSS and JavaScript only. No external libraries... Keep the existing footer text exactly as it is.”
+  2. “Add a ‘Get my plan’ page with a short quiz: goal, experience level, days per week available, and equipment. When submitted, show a personalized weekly workout plan and simple, moderate nutrition guidance... no extreme calorie targets.”
+  3. “On the ‘Get my plan’ section there are two problems. The quiz questions are squashed together... When I click ‘Build my plan’ the page reloads... Fix only these two things. Only edit the files. Don’t run any terminal commands or tests.”
+- **What worked:** The home page came out clean and explains the product right away. The quiz builds a different weekly plan depending on the answers. Adding “don’t run any terminal commands” to my prompts stopped Copilot from getting stuck.
+- **What broke, and how we fixed it:** Copilot got stuck on “confirmations pending” twice, and no approve buttons showed up, so I stopped it and committed the changes myself. I typed my commit message into the Copilot chat by mistake and it started a new task, so I stopped it and found the real commit box in Source Control. The quiz looked unstyled on the live site and the button reloaded the page; a hard refresh showed my browser was showing old cached files, and I also had Copilot fix the layout.
+- **Committed?** Yes — “Built home page,” “Added plan quiz,” and “Fixed quiz layout and plan button.”
 
 ---
 
@@ -28,7 +30,9 @@ Copy this block for each session.
 
 | Date | What went wrong | What we tried | What finally fixed it |
 |---|---|---|---|
-| | | | |
+| Nov 26 | Copilot got stuck on “confirmations pending” with no buttons. | Looked for approve buttons and made the chat panel bigger. | Stopped Copilot, committed manually, then added “Only edit the files. Don’t run any terminal commands or tests.” to every prompt. |
+| Nov 26 | Typed the commit message into Copilot chat, and it started a new task. | Stopped it. | Used the Message box in the Source Control panel instead. |
+| Nov 26 | Quiz looked unstyled on the live site, and the button reloaded the page. | Asked Copilot to fix the layout and the button. | Hard refresh (Cmd+Shift+R) because the browser was showing old cached files. |
 
 ## What a real version would need
 
