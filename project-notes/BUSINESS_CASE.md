@@ -8,7 +8,13 @@ This is for mainly university students who are either beginners or who have quit
 
 ## 2. Where IT creates value
 
-Which parts of the value chain does your product change, and how? Which course concepts apply (e.g. scale, distribution channels, differentiation, data, switching costs)?
+Before: finding a trainer means searching around and booking stuff in person and trainers would. have to find their own clients. 
+With Newrep: Clients will come from the platform. The thing that makes this better is that trainers dont have to pay for ads and students can easily compare all trainers online by their specialty price and reviews all in one place.
+
+Before: Trainer meetups and session happen at the gym for a decent period of time and takes time for both trainers and students to drive to the gym.
+With Newrep: A 15 minute video call saves all the time from trevel to the gym and the gym time.
+
+The A.I meal log also means the trainer dosnt have to spend time having meetings with you talking about what youve had to eat everyday, so the 15 minutes is spent strictly on talking about advice.
 
 ## 3. Network effects
 
