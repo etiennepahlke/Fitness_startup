@@ -4,10 +4,7 @@ Your prototype shows *what* the product looks like. This document explains *why*
 
 ## 1. The idea
 
-- **Customer:** Who exactly is it for?
-- **Problem:** What problem do they have today, and how do they solve it now?
-- **Solution:** What does your product do differently or better?
-- **Revenue:** How does the company make money?
+This is for mainly university students who are either beginners or who have quit before. Their problem is that they dont have any guidance, they find it hard to stay motivated, they find trainers too expensive and they dont have enough time. Right now people use lots of A.I meal tracking, youtube videos etc... But nothing tht combines everything. What Newrep does better is give you a full plan, acurate A.I meal tracking and cheap trainer check ins all in one place while the trainer holds you accountable. For the money aspect, it will cost $19 per check in, with 80% going to the trainer and 20% to Newrep. Then there will also be a premium version for meal tracking for an extra $5 monthly.
 
 ## 2. Where IT creates value
 
