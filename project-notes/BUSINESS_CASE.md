@@ -57,3 +57,7 @@ A risk would be if one of the services crashed or went down. We would have to sw
 ## 6. Risks and ethics
 
 What could go wrong — for your customers, their data, or society? What would you do about it?
+
+Risk 1: Eating disorders, calorie counting can push people towrds things they may not want to do and could lead to eating disorders.
+
+Risk 2: Privacy, there are some people that may not want to share everything that they are eating.
