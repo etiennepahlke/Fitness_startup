@@ -61,3 +61,6 @@ What could go wrong — for your customers, their data, or society? What would y
 Risk 1: Eating disorders, calorie counting can push people towrds things they may not want to do and could lead to eating disorders.
 
 Risk 2: Privacy, there are some people that may not want to share everything that they are eating.
+
+
+A.I line: I used Claude to help walk me through and explain the assignment but Claude did not actually do any of the assignment for me and I also came up with the website idea completely by my self as nutrition and fitness is a big interest of mine.
