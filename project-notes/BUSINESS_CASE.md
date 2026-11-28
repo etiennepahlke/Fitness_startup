@@ -45,6 +45,15 @@ My moat overall is medium. The website is easy to copy but reviews, trainers and
 
 What would it take to run this for real? Which parts would you buy as cloud services (SaaS, PaaS, IaaS), and what are the risks of relying on them?
 
+To run Newrep we would use:
+A log in service for accounts
+A hosting platform for the app
+A payment processor
+A video call service for check ins
+An A.I service for meal photos
+
+A risk would be if one of the services crashed or went down. We would have to switch providers and it may cost us more money.
+
 ## 6. Risks and ethics
 
 What could go wrong — for your customers, their data, or society? What would you do about it?
