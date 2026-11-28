@@ -73,5 +73,11 @@ Everything we wanted but faked or left out — real logins, a real database, pay
 ## Reflection (fill in at the end)
 
 1. What surprised you most about building software with AI?
+It suprised me how fast the website came together, especially with how little coding experience I have.
+
 2. Which parts were easy, and which were hard? Why do you think that is?
+It was easy tdescribing the page and actually getting it built by A.I
+It was hard to find my way around github at first because their are so many different things to look at.
+
 3. If a competitor had the same AI tool, how long would it take them to copy your site?
+It would only take them a couple hours probably since I have zero coding experience and it took me a couple days only.
