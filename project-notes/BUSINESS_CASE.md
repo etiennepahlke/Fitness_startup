@@ -29,9 +29,17 @@ We will launch at one campus to start off and will recruit kinesiology students 
 
 Anyone in this class could rebuild your website in a weekend with the same AI tool. So the code is **not** your competitive advantage.
 
-- What about your business is **valuable, rare, hard to imitate and well-organized** (VRIN)?
-- What would a competitor with a bigger budget need to copy you, and how long would it take?
-- Which of your advantages get *stronger* over time (data, network, brand, switching costs)?
+I built the Newrep website in a few days with no coding experience so a profesional coder and website builder would probably do better than me. Which means the website is not to our advantage.
+
+Rare and hard to imitate: a new app starts with no reviews and you cant build that overnight.
+
+Switching cost: a trainer with 100 good reviews wouldnt leave because theyd have to restart their reputation.
+
+Every meal log and check in teaches Newrep which plans actually work for students. After a year there will be lots of data that a brand new app would not have a could not buy. It gets better the more students that use it.
+
+A student and a trainer could text each other directly to avoid the 20% fee. Trainers could also post on other sites. Also a big fitness app with millions of users could add the trainer check ins feature which would be hard to compete with.
+
+My moat overall is medium. The website is easy to copy but reviews, trainers and data is what takes time to build.
 
 ## 5. Cloud and operations
 
