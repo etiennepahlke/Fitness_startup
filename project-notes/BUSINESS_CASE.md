@@ -20,10 +20,10 @@ The A.I meal log also means the trainer dosnt have to spend time having meetings
 
 Does your product get more valuable as more people use it?
 
-- Is it a **one-sided** or **two-sided** market? Who are the sides?
-- Where does the extra value come from as the network grows?
-- How would you solve the "empty network" problem at launch?
-- Point to the part of your prototype that shows this.
+When more trainers join the platform, students will have more options, shorter wait times and lower prices.
+When more students join, trainers schedules fill up more and they get more earnings without having to find clients on their own.
+This is a network effect because each new user makes the platform more valuable for the other side (trainers).
+We will launch at one campus to start off and will recruit kinesiology students to become trainers and use the free plan to attract students. This will fill up both sides.
 
 ## 4. Can it be copied? (the moat question)
 
